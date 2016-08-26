@@ -10,3 +10,8 @@ require_relative "assign"
 require_relative "while"
 require_relative "sequence"
 require_relative "if"
+
+RubyVM::InstructionSequence.compile_option = {
+  tailcall_optimization: true,
+  trace_instruction: false
+}

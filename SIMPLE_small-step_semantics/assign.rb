@@ -1,4 +1,4 @@
-class Assign < Struct.new(:name, :expression)
+class Assign < Struct.new(:name, :expression, :environment)
   def to_s
     "#{name} = #{expression}"
   end
@@ -14,5 +14,8 @@ class Assign < Struct.new(:name, :expression)
     else
       [DoNothing.new, environment.merge({ name => expression })]
     end
+  end
+  def evaluate(environment)
+    environment.merge({ name => expression.evaluate(environment) })
   end
 end

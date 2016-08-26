@@ -1,4 +1,4 @@
-class If < Struct.new(:condition, :consequence, :alternative)
+class If < Struct.new(:condition, :consequence, :alternative, :environment)
   def to_s
     "if (#{condition}) { #{consequence} } else { #{alternative} }"
   end
@@ -18,6 +18,14 @@ class If < Struct.new(:condition, :consequence, :alternative)
       when Boolean.new(false)
         [alternative, environment]
       end
+    end
+  end
+  def evaluate(environment)
+    case condition.evaluate(environment)
+    when Boolean.new(true)
+      consequence.evaluate(environment)
+    when Boolean.new(false)
+      alternative.evaluate(environment)
     end
   end
 end
