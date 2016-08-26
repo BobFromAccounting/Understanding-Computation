@@ -1,5 +1,3 @@
-require_relative "bootstrap"
-
 puts Number.new(23).evaluate({})
 
 puts Variable.new(:x).evaluate({ x: Number.new(23) })
@@ -9,7 +7,7 @@ puts LessThan.new(
   Variable.new(:y)
 ).evaluate({ x: Number.new(2), y: Number.new(5) })
 
-puts statement = 
+puts statement =
   Sequence.new(
     Assign.new(:x, Add.new(Number.new(1), Number.new(1))),
     Assign.new(:y, Add.new(Variable.new(:x), Number.new(3)))

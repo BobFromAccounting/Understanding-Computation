@@ -1,5 +1,3 @@
-require_relative "bootstrap"
-
 puts Number.new(5).to_ruby
 
 puts Boolean.new(false).to_ruby

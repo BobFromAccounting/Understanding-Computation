@@ -1,5 +1,3 @@
-require_relative "bootstrap"
-
 puts old_environment = { y: Number.new(5) }
 
 puts new_environment = old_environment.merge({ x: Number.new(3) })
@@ -65,4 +63,4 @@ puts Machine.new(
     Assign.new(:x, Add.new(Variable.new(:x), Number.new(1)))
   ),
   {}
-).run
+)
