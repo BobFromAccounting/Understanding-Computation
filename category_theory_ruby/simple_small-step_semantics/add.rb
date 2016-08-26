@@ -2,6 +2,9 @@ class Add < Struct.new(:left, :right, :environment)
   def to_s
     "#{left} + #{right}"
   end
+  def to_ruby
+    "-> e { (#{left.to_ruby}).call(e) + (#{right.to_ruby}).call(e) }"
+  end
   def inspect
     "«#{self}»"
   end

@@ -2,6 +2,9 @@ class Sequence < Struct.new(:first, :second, :environment)
   def to_s
     "#{first}; #{second}"
   end
+  def to_ruby
+    "-> e { (#{second.to_ruby}).call((#{first.to_ruby}).call(e)) }"
+  end
   def inspect
     "«#{self}»"
   end

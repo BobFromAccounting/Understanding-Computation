@@ -2,6 +2,9 @@ class Assign < Struct.new(:name, :expression, :environment)
   def to_s
     "#{name} = #{expression}"
   end
+  def to_ruby
+    "-> e { e.merge({ #{name.inspect} => (#{expression.to_ruby}).call(e) }) }"
+  end
   def inspect
     "«#{self}»"
   end

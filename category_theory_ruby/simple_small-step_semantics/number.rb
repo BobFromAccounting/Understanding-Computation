@@ -1,17 +1,17 @@
-class DoNothing
+class Number < Struct.new(:value, :environment)
   def to_s
-    'do-nothing'
+    value.to_s
+  end
+  def to_ruby
+    "-> e { #{value.inspect} }"
   end
   def inspect
     "«#{self}»"
-  end
-  def ==(other_statement)
-    other_statement.instance_of?(DoNothing)
   end
   def reducible?
     false
   end
   def evaluate(environment)
-    environment
+    self
   end
 end
